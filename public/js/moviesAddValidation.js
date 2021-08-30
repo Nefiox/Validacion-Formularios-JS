@@ -16,7 +16,7 @@ window.onload = function() {
     const lengthValidation = document.querySelector('.lengthValidation');
     const genreValidation = document.querySelector('.genreValidation');
 
-    // Validación on-time en todos los elementos
+    // Parte 1: Validación on-time en todos los elementos
     titleInput.addEventListener('blur', () => {
         if(titleInput.value == '') {
             titleInput.classList.remove('is-valid');
@@ -134,7 +134,49 @@ window.onload = function() {
         }
     });
 
+    // Parte 2: Lista de errores
     form.addEventListener('submit', (e) => {
-        e.preventDefault();
+        let errores = [];
+
+        if(titleInput.value == '') {
+            errores.push("Debes agregar un título");
+        };
+
+        if( ratingInput.value < 0 || ratingInput.value > 10 ) {
+            errores.push("Ingresa un valor entre 0 y 10");
+        } else if (ratingInput.value == '') {
+            errores.push("Debes agregar una calificación");
+        };
+
+        if(awardsInput.value < 0 || awardsInput.value > 10) {
+            errores.push("Ingresa un valor entre 0 y 10");
+        } else if (awardsInput.value == '') {
+            errores.push("Debes agregar un premio");
+        };
+
+        if(release_dateInput.value == '') {
+            errores.push("Debes agregar una fecha");           
+        };
+
+        if(lengthInput.value == '') {
+            errores.push("Debes agregar una duración");
+        } else if (lengthInput.value < 60 || lengthInput.value > 360) {
+            errores.push("Ingresa un valor entre 60 y 360 minutos");
+        };
+
+        if(genre_idInput.value == '') {
+            errores.push("Debes agregar un género");
+        };
+
+        if(errores.length > 0) {
+            e.preventDefault();
+
+            const ulErrores = document.querySelector('div.alert-warning ul');
+            ulErrores.innerHTML = '';
+
+            errores.forEach(error => {
+                ulErrores.innerHTML += `<li>${error}</li>`
+            });
+        };
     });
 };
