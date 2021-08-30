@@ -89,3 +89,28 @@ figure{
   margin: auto;
   width: 20%;
 }
+
+.is-invalid {
+  border: 2px solid red;
+  background-color: rgb(240, 164, 164);
+}
+
+.is-invalid-txt {
+  color: red;
+  content: 'FALTS'
+}
+
+.is-valid {
+  border: 2px solid green;
+  background-color: rgb(210, 240, 210);
+}
+
+.titleValidation,
+.ratingValidation,
+.awardsValidation,
+.release_dateValidation,
+.lengthValidation,
+.genreValidation {
+  color: red;
+  font-weight: bold;
+}

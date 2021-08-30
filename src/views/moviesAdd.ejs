@@ -16,20 +16,36 @@
     <br>
     <section id="formulario" >
         <article >
+            <div class="is-invalid-txt">
+                <ul>
+
+                </ul>
+            </div>
             <form action="/movies/create" method="POST">
                 <label for="title">Titulo </label>
-                <p><input type="text" name="title" id="" required></p>
+                <p class="titleValidation"></p>
+                <p><input type="text" name="title" id="title" autofocus></p>
+
                 <label for="rating">Calificación </label>
-                <p><input type="number" name="rating" id="" required> </p>
+                <p class="ratingValidation"></p>
+                <p><input type="number" name="rating" id="rating" > </p>
+                
                 <label for="awards">Premios </label>
-                <p><input type="number" name="awards" id="" required></p>
+                <p class="awardsValidation"></p>
+                <p><input type="number" name="awards" id="awards" ></p>
+                
                 <label for="release_date">Fecha de creación </label>
-                <p><input type="date" name="release_date" id="" required></p>
+                <p class="release_dateValidation"></p>
+                <p><input type="date" name="release_date" id="release_date" ></p>
+                
                 <label for="length">Duración </label>
-                <p><input type="number" name="length" id="" required></p>
+                <p class="lengthValidation"></p>
+                <p><input type="number" name="length" id="length" ></p>
+                
                 <label for="genreID">Género </label>
+                <p class="genreValidation"></p>
                 <p>
-                    <select name="genre_id" id="" required>
+                    <select name="genre_id" id="genre_id" >
                         <option value="" disabled selected>- Seleccione el género - </option>
                         <% allGenres.forEach(genre => { %>
                         <option value="<%= genre.id %>"><%= genre.name %></option>
@@ -43,5 +59,6 @@
             </form>
         </article>
     </section>
+    <script src="/js/moviesAddValidation.js"></script>
 </body>
 </html>
